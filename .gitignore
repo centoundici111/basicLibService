@@ -48,7 +48,6 @@ local.properties
 .springBeans
 
 gradlew
-gradle
 gradlew.bat
 .gitattributes
 # Code Recommenders
