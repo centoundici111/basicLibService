@@ -5,8 +5,8 @@ services:
     restart: always
     environment:
       - POSTGRES_DB=biblioteca
-      - POSTGRES_USER=task
-      - POSTGRES_PASSWORD=task
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=3lp@ssword
     ports:
       - '5432:5432'
     volumes:
