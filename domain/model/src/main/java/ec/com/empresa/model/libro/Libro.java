@@ -1,16 +1,14 @@
 package ec.com.empresa.model.libro;
 
-
-import lombok.Builder;
+import lombok.*;
 
 @Builder(toBuilder = true)
 public record Libro(
         String ISBN,
-        String nombre,
-        String descripcion) {
-
+        String nombreDelLibro,
+        String descripcion
+) {
 }
-
 
 // Ciudad  codigo valor estado
 // Paises codigo valor estado

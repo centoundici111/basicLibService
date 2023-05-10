@@ -9,17 +9,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class JPARepositoryAdapter extends AdapterOperations<Libro,LibroEntity, String, JPARepository>
- implements LibroRepository
-{
+public class JPARepositoryAdapter extends AdapterOperations<Libro, LibroEntity, String, JPARepository>
+        implements LibroRepository {
 
     public JPARepositoryAdapter(JPARepository repository, ObjectMapper mapper) {
-        /**
-         *  Could be use mapper.mapBuilder if your domain model implement builder pattern
-         *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
-         *  Or using mapper.map with the class of the object model
-         */
-        super(repository, mapper, d -> mapper.map(d, Libro.class));
+        //se puede utilizar pero obliga a que el modelo sea una clase y no un record y tenga
+        //@Getter
+        //@Setter
+        //y que los nombres de los atributos hagan match de manera exacta con la entidad JPA
+        // super(repository, mapper, d -> mapper.mapBuilder(d,Libro.LibroBuilder.class).build());
+
+        //este es el mapeo manual y si se puede usar un record
+        super(repository, mapper, libroE -> Libro.builder().ISBN(libroE.getISBN())
+                .nombreDelLibro(libroE.getNombre())
+                .descripcion(libroE.getDescripcion()).build());
     }
 
     @Override

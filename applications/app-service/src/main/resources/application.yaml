@@ -14,6 +14,7 @@ spring:
     driverClassName: "org.postgresql.Driver"
   jpa:
     databasePlatform: "org.hibernate.dialect.PostgreSQLDialect"
+    show-sql: true
 management:
   endpoints:
     web:
