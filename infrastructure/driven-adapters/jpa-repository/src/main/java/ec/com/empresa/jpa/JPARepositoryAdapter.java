@@ -29,4 +29,11 @@ public class JPARepositoryAdapter extends AdapterOperations<Libro, LibroEntity, 
     public List<Libro> findByName(String name) {
         return null;
     }
+
+    @Override
+    public Libro createBook(Libro libro) {
+        LibroEntity mapToEntity = LibroEntity.builder().ISBN(libro.ISBN()).nombre(libro.nombreDelLibro()).build();
+        this.saveData(List.of(mapToEntity));
+        return libro;
+    }
 }

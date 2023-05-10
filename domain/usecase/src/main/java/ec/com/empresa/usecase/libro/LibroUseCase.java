@@ -16,4 +16,7 @@ public class LibroUseCase {
     public final Libro findById(String id){
         return libroRepository.findById(id);
     }
+    public final Libro createBook(Libro libro){
+        return libroRepository.createBook(libro);
+    }
 }

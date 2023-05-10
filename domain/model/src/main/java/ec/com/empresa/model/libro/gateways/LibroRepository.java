@@ -8,4 +8,5 @@ public interface LibroRepository {
     public List<Libro> findByName(String name);
 
     public Libro findById(String id);
+    public Libro createBook(Libro libro);
 }
