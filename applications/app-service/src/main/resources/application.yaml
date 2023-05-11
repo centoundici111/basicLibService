@@ -10,7 +10,7 @@ spring:
   datasource:
     url: "jdbc:postgresql://127.0.0.1:5432/biblioteca"
     username: "postgres"
-    password: "3lp@ssword"
+    password: "31p@ssword"
     driverClassName: "org.postgresql.Driver"
   jpa:
     databasePlatform: "org.hibernate.dialect.PostgreSQLDialect"

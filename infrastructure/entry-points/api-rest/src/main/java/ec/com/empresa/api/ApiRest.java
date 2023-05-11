@@ -1,9 +1,9 @@
 package ec.com.empresa.api;
 
+import ec.com.empresa.model.exceptions.EntityNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import ec.com.empresa.model.exceptions.BookException;
 import ec.com.empresa.model.libro.Libro;
 import ec.com.empresa.usecase.libro.LibroUseCase;
 import lombok.AllArgsConstructor;
@@ -16,20 +16,12 @@ public class ApiRest {
 
 	@GetMapping(path = "/libros")
 	public Libro findById(@RequestParam String id) {
-//      return useCase.doAction();
-		return libroUseCase.findById(id);
+		return libroUseCase.findById(id).orElseThrow(() -> new EntityNotFoundException("Book not found."));
 
 	}
 
 	@PostMapping(path = "/libros")
-	@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Required data is missing.")
 	public Libro createBook(@RequestBody Libro libro) {
-//      return useCase.doAction();
-		try {
 			return libroUseCase.createBook(libro);
-		} catch (BookException be) {
-			throw new RuntimeException();
-		}
-
 	}
 }
